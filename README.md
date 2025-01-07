@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Ambulance Management API
 
 ## Description
@@ -15,4 +14,3 @@ Permet de gérer les ambulances avec des opérations CRUD (Créer, Lire, Mettre 
 =======
 # Ambulance-Management-API
 API de Gestion d'Ambulances construite avec Node.js, Express et MySQL.
->>>>>>> 02b75427e15b623637eb6c87cc94aa8d22e7b475
