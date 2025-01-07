@@ -11,6 +11,3 @@ Permet de gérer les ambulances avec des opérations CRUD (Créer, Lire, Mettre 
 - **Base de Données** : MySQL
 - **ORM** : Sequelize
 - **Documentation** : Swagger (OpenAPI)
-=======
-# Ambulance-Management-API
-API de Gestion d'Ambulances construite avec Node.js, Express et MySQL.
