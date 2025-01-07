@@ -5,8 +5,7 @@ const { connectDB, sequelize } = require('./config/database');
 require('dotenv').config();
 const ambulanceRoutes = require('./routes/ambulanceRoutes');
 const swaggerUi = require('swagger-ui-express');
-const YAML = require('yamljs');
-const path = require('path');
+const swaggerSpec = require('./swagger'); // Import the Swagger config
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -15,26 +14,25 @@ const PORT = process.env.PORT || 3000;
 app.use(bodyParser.json());
 
 // Swagger Documentation
-const swaggerDocument = YAML.load(path.join(__dirname, 'swagger.yaml'));
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Routes
 app.get('/', (req, res) => {
-  res.send('API de Gestion d\'Ambulances');
+  res.send("Ambulance Management API");
 });
 
 app.use('/api', ambulanceRoutes);
 
-// Démarrer le serveur
+// Start the server
 const startServer = async () => {
   await connectDB();
 
-  // Synchroniser les modèles avec la base de données
+  // Sync models with the database
   await sequelize.sync({ force: false });
 
   app.listen(PORT, () => {
-    console.log(`Serveur démarré sur le port ${PORT}`);
-    console.log(`Documentation Swagger disponible sur http://localhost:${PORT}/api-docs`);
+    console.log(`Server running on port ${PORT}`);
+    console.log(`Swagger docs available at http://localhost:${PORT}/api-docs`);
   });
 };
 
